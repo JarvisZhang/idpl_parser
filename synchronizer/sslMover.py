@@ -45,8 +45,7 @@ class FileReader:
 			return True
 
 	def getNewFilePath(self, suffix):
-		return "%s.%d" % (self.fileUri, suffix), suffix + 1
-	
+		return "%s.%d" % (self.fileUri, suffix), suffix + 1	
 
 	def chooseLinesInAFile(self, fileLines, reg, timestamp, strAdded, isTimeReached):
 		while len(fileLines):
@@ -57,7 +56,6 @@ class FileReader:
 				isTimeReached = True
 				break
 		return strAdded, isTimeReached
-		
 
 	def chooseLines(self, timestamp, offsetL, path):
 		self.fileUri = path
@@ -108,8 +106,6 @@ class Server:
 	def match(self, reg, strToMatch):
 		return re.compile(reg).match(strToMatch)
 
-		
-
 	def changeFlag(self):
 		time.sleep(2)
 		chirp.setJobAttr("SSLServer","'%s %d'" % (self.host, int(self.port)))
@@ -127,7 +123,6 @@ class Server:
 			for line in cert.readlines():
 				certStr = "%s%s" % (certStr, line.strip("\n"))
 		chirp.setJobAttr("SSLCert", "'%s'" % certStr)
-
 
 		sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		try:
@@ -203,7 +198,6 @@ class XmlHandler:
 		self.xmlTree.write(xmlfile, encoding="utf-8")
 
 
-
 class Client:
 
 	def __init__(self,config):
@@ -238,9 +232,6 @@ class Client:
 		
 		with open(path, "w") as certfile:
 			certfile.write(certDealt)
-
-
-		
 
 	def request(self):
 		""" Read xml file """

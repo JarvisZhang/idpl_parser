@@ -42,10 +42,10 @@ for opt, arg in opts:
 		config = arg
 
 resultcode,output,err=TimedExec.runTimedCmd(timeout,[sslexe, "-l", log_path, "-p", port, "-c", config])
-print ("".join(output))
+print("".join(output))
 if resultcode < 0:
 	side = int(os.environ['_CONDOR_PROCNO'])
-	print ("Timeout! Result code %d" % resultcode)
+	print("Timeout! Result code %d" % resultcode)
 	if side == 0:
 		raise TimeOutException("client")
 	else:
